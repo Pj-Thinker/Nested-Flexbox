@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    Tecgnical documentation
+  </title>
+
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav id="navbar" class="noselect">
+    <input type="checkbox" id="toggle">
+    <label for="toggle">
+      <header>Flexbox layout</header>
+    </label>
+    <ul id="navbar-list">
+      <li><a class="nav-link" href="#introduction">Introduction</a></li>
+      <li><a class="nav-link" href="#flex_container">Flex containers</a></li>
+      <li>
+        <a class="nav-link" href="#ordering_orientation">Ordering and Orientation</a>
+      </li>
+      <li><a class="nav-link" href="#alignment">Alignment</a></li>
+      <li><a class="nav-link" href="#flexibility">Flexibility</a></li>
+      <li><a class="nav-link" href="#nested_flexbox">Nested flexbox</a></li>
+      <li><a class="nav-link" href="#reference">References</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-doc">
+
+    <section class="main-section" id="introduction">
+      <article>
+        <header>Introduction</header>
+        <p>
+          Every HTML element has a default display value depending on what type of element it is. The default display
+          value for most elements is block or inline.
+        </p>
+
+        <ul class="emphasis">
+          <li>
+            <strong>Block elements </strong>always start on a new line and take
+            up the full width available. Examples include <span class="inline-code"><code>&lt;div&gt;</code></span> and
+            <span class="inline-code">
+              <code>&lt;p&gt;</code></span> elements.
+          </li>
+          <li>
+            <strong>Inline elements </strong>do not start on a
+            new line and only take up as much width as necessary. Any height and
+            width properties will not affect on this element. Examples include <span
+              class="inline-code"><code>&lt;span&gt;</code></span> and
+            <span class="inline-code">
+              <code>&lt;a&gt;</code></span> elements.
+          </li>
+        </ul>
+
+        <p>
+          Fortunately, the default display can be overridden. The Flexbox lets containers decide how to evenly
+          distribute
+          their
+          children including their size and the space between them.
+        </p>
+      </article>
+    </section>
+
+    <section class="main-section" id="flex_container">
+      <article>
+        <header>Flex container</header>
+        <p>
+          To start using the Flexbox model, all you need to do is first set a
+          certain parent element to be a flex-container by using <span
+            class="inline-code"><code>display:flex</code></span>. This immediately establishes a new flex
+          formatting context for its children.
+        </p>
+        <p>
+          There are two key terms that we use frequently. I'll write them down here for future reference.
+        </p>
+        <ul class="emphasis">
+          <li>
+            <strong>Flex container :</strong> The parent element you've set <span
+              class="inline-code"><code>display:flex</code></span> on.
+          </li>
+          <li>
+            <strong>Flex items :</strong> The children elements within a Flex container
+          </li>
+        </ul>
+
+        <img src="images/container.png" alt="container image" width="400px" class="image">
+
+      </article>
+    </section>
+
+    <section class="main-section" id="ordering_orientation">
+      <article>
+        <header>Ordering and Orientation</header>
+        <p>
+          The contents of a flex container can be laid out in any direction and any order.
+          This allows an author to easily achieve effects that would
+          previously have required complex or fragile methods.
+          This functionality is exposed through the <em>flex-direction</em>, <em>flex-wrap</em>, and <em>order</em>
+          properties.
+        </p>
+
+        <div class="sub-section" id="flex-direction">
+          <h1>flex-direction</h1>
+          <p>
+            The flex-direction property specifies how flex items are placed in the flex container, by setting the
+            direction of the flex container’s main axis. Its values are as below.
+          </p>
+
+          <div class="tabs">
+            <input name="flex-tabs" type="radio" id="row-tab" class="tab-input" checked>
+            <label for="row-tab" class="tab-label">row</label>
+            <div class="tab-content">
+              <p>In horizontal direction (left to right)</p>
+              <img src="images/row.png" alt="row imgage" width="400px" class="image">
+            </div>
+
+            <input name="flex-tabs" type="radio" id="row-reverse-tab" class="tab-input">
+            <label for="row-reverse-tab" class="tab-label">row-reverse</label>
+            <div class="tab-content">
+              <p>Same as row, except the direction is swapped</p>
+              <img src="images/row-reverse.png" alt="row reverse imgage" width="400px" class="image">
+            </div>
+
+            <input name="flex-tabs" type="radio" id="column-tab" class="tab-input">
+            <label for="column-tab" class="tab-label">column</label>
+            <div class="tab-content">
+              <p>In vertical direction (top to bottom)</p>
+              <img src="images/column.png" alt="column image" height="160px" class="image">
+            </div>
+
+            <input name="flex-tabs" type="radio" id="column-reverse-tab" class="tab-input">
+            <label for="column-reverse-tab" class="tab-label">column-reverse</label>
+            <div class="tab-content">
+              <p>Same as column, except the direction is swapped.</p>
+              <img src="images/column-reverse.png" alt="column reverse image" height="160px" class="image">
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section" id="flex-wrap">
+          <h1>flex-wrap</h1>
+          <p>
+            The flex-wrap property controls whether the flex container is
+            single-line or multi-line. <strong>wrap</strong> and <strong>nowrap</strong> are its two main values.
+          </p>
+
+          <div class="tabs">
+            <input name="align-tabs" type="radio" id="nowrap-tab" class="tab-input" checked>
+            <label for="nowrap-tab" class="tab-label">nowrap</label>
+            <div class="tab-content">
+              <p>The flex container is single-line.</p>
+              <img src="images/nowrap.png" alt="nowrap image" width="400px" class="image">
+            </div>
+
+            <input name="align-tabs" type="radio" id="wrap-tab" class="tab-input" />
+            <label for="wrap-tab" class="tab-label">wrap</label>
+            <div class="tab-content">
+              <p>The flex container is multi-line.</p>
+              <img src="images/wrap.png" alt="wrap image" width="400px" class="image">
+            </div>
+          </div>
+        </div>
+
+        <div id="flex-flow">
+          <ul class="emphasis">
+            <li>
+              The <span class="inline-code"><code>flex-flow</code></span> property is a shorthand for setting the
+              flex-direction
+              and flex-wrap properties, which together define the flex container’s
+              main and cross axes.
+            </li>
+          </ul>
+        </div>
+
+        <div class="sub-section" id="order">
+          <h1 class="sub-head">order</h1>
+          <p>
+            Flex items are, by default, displayed and laid out in the same order
+            as they appear in the source document. The <span class="inline-code"><code>order</code></span> property can
+            be used
+            to change this ordering.
+          </p>
+          <img src="images/order.png" alt="order image" width="400px" class="image">
+        </div>
+      </article>
+    </section>
+
+    <section class="main-section" id="alignment">
+      <article>
+        <header>Alignment</header>
+        <p>
+          After a flex container’s contents have finished their flexing and the
+          dimensions of all flex items are finalized, they can then be aligned
+          within the flex container.
+        </p>
+
+        <div class="sub-section" id="justify-content">
+          <h1 class="sub-head">justify-content</h1>
+          <p>
+            The justify-content property aligns flex items along the main axis of the current line of the flex
+            container. In other words, it helps distribute extra free space
+            leftover.
+          </p>
+
+          <div class="tabs">
+
+            <input name="justify" type="radio" id="flexstart" class="tab-input" checked>
+            <label for="flexstart" class="tab-label">flex-start</label>
+            <div class="tab-content">
+              <p>Flex items are packed toward the start
+                of the line.</p>
+              <img src="images/justify-flex-start.png" alt="flex start image" width="400px" class="image">
+            </div>
+
+            <input name="justify" type="radio" id="flexend" class="tab-input">
+            <label for="flexend" class="tab-label">flex-end</label>
+            <div class="tab-content">
+              <p>Flex items are packed toward the end of
+                the line.</p>
+              <img src="images/justify-flex-end.png" alt="flex end image" width="400px" class="image">
+            </div>
+
+            <input name="justify" type="radio" id="center" class="tab-input">
+            <label for="center" class="tab-label">center</label>
+            <div class="tab-content">
+              <p>Flex items are packed toward the center of the line.</p>
+              <img src="images/justify-center.png" alt="center image" width="400px" class="image">
+            </div>
+
+            <input name="justify" type="radio" id="space-between" class="tab-input">
+            <label for="space-between" class="tab-label">space-between</label>
+            <div class="tab-content">
+              <p>Flex items are evenly distributed in the line.</p>
+              <img src="images/justify-between.png" alt="space between image" width="400px" class="image">
+            </div>
+
+            <input name="justify" type="radio" id="space-around" class="tab-input">
+            <label for="space-around" class="tab-label">space-around</label>
+            <div class="tab-content">
+              <p>Half-size spaces on
+                either end.</p>
+              <img src="images/justify-around.png" alt="space row image" width="400px" class="image">
+            </div>
+
+            <input name="justify" type="radio" id="space-evenly" class="tab-input">
+            <label for="space-evenly" class="tab-label">space-evenly</label>
+            <div class="tab-content">
+              <p>Full-size space on
+                either end.</p>
+              <img src="images/justify-evenly.png" alt="space evenly image" width="400px" class="image">
+            </div>
+
+          </div>
+        </div>
+
+        <div class="sub-section" id="align-items-self">
+
+          <h1 class="sub-head">align-items & align-self</h1>
+          <p>
+            Flex items can be aligned in the cross axis of the current line of the flex container, similar to
+            justify-content but in the perpendicular direction.
+            align-self allows this default alignment to be overridden for individual flex items.
+          </p>
+
+          <div class="tabs">
+
+            <input name="align-item" type="radio" id="align-flexstart" class="tab-input" checked>
+            <label for="align-flexstart" class="tab-label">flex-start</label>
+            <div class="tab-content">
+              <p>Flex items are packed toward the start
+                of the cross axis</p>
+              <img src="images/justify-flex-start.png" alt="align flex start image" width="400px" class="image">
+            </div>
+
+            <input name="align-item" type="radio" id="align-flexend" class="tab-input">
+            <label for="align-flexend" class="tab-label">flex-end</label>
+            <div class="tab-content">
+              <p>Flex items are packed toward the end of
+                the cross axis</p>
+              <img src="images/align-flex-end.png" alt="align flex end image" width="400px" class="image">
+            </div>
+
+            <input name="align-item" type="radio" id="align-center" class="tab-input">
+            <label for="align-center" class="tab-label">center</label>
+            <div class="tab-content">
+              <p>Flex items are packed toward the center of the cross axis</p>
+              <img src="images/align-flex-center.png" alt="align center image" width="400px" class="image">
+            </div>
+
+            <input name="align-item" type="radio" id="stretch" class="tab-input">
+            <label for="stretch" class="tab-label">stretch</label>
+            <div class="tab-content">
+              <p>Flex items are evenly distributed in the line.</p>
+              <img src="images/align-flex-stretch.png" alt="align stretch image" width="400px" class="image">
+            </div>
+          </div>
+
+        </div>
+
+        <p>
+        <ul class="emphasis">
+          <li>
+            Note: If the flex container’s height is constrained this value may
+            cause the contents of the flex item to overflow the item.
+          </li>
+        </ul>
+        </p>
+
+        <div class="sub-section" id="align-content">
+          <h1 class="sub-head">align-content</h1>
+          <p>
+            The align-content property aligns a flex container’s lines within the
+            flex container when there is extra space in the cross-axis, similar to how justify-content aligns
+            individual
+            items within the main-axis.
+          </p>
+
+          <div class="tabs">
+
+            <input name="align-content" type="radio" id="align-content-flexstart" class="tab-input" checked>
+            <label for="align-content-flexstart" class="tab-label">flex-start</label>
+            <div class="tab-content">
+              <p>Flex items are packed toward the start
+                of the cross axis</p>
+              <img src="images/align-content-start.png" alt="align content flex start image" width="400px"
+                class="image">
+            </div>
+
+            <input name="align-content" type="radio" id="align-content-flexend" class="tab-input">
+            <label for="align-content-flexend" class="tab-label">flex-end</label>
+            <div class="tab-content">
+              <p>Flex items are packed toward the end of
+                the cross axis</p>
+              <img src="images/align-content-end.png" alt="align content flex end image" width="400px" class="image">
+            </div>
+
+            <input name="align-content" type="radio" id="align-content-center" class="tab-input">
+            <label for="align-content-center" class="tab-label">center</label>
+            <div class="tab-content">
+              <p>Flex items are packed toward the center of the cross axis</p>
+              <img src="images/align-content-center.png" alt="align content center image" width="400px" class="image">
+            </div>
+
+            <input name="align-content" type="radio" id="content-between" class="tab-input">
+            <label for="content-between" class="tab-label">space-between</label>
+            <div class="tab-content">
+              <p>Equal space between cross axis lines</p>
+              <img src="images/align-content-between.png" alt="align content space between image" width="400px"
+                class="image">
+            </div>
+
+            <input name="align-content" type="radio" id="content-around" class="tab-input">
+            <label for="content-around" class="tab-label">space-around</label>
+            <div class="tab-content">
+              <p>Half-space on either end.</p>
+              <img src="images/align-content-around.png" alt="align content space around" width="400px" class="image">
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+    </section>
+
+    <section class="main-section" id="flexibility">
+      <article>
+        <header>Flexibility</header>
+        <p>
+          A flex container distributes free space to its items (proportional to their flex grow factor) to fill the
+          container or shrinks
+          them (proportional to their flex shrink factor) to prevent overflow.
+        </p>
+
+        <ul>
+          <li>
+            <strong>flex-grow : </strong>This property specifies the flex
+            grow factor, which determines how much the flex item will grow relative to the rest of the flex items.
+          </li>
+          <li>
+            <strong>flex-shrink : </strong>This property determines how much
+            the flex item will shrink relative to the rest of the
+            flex items.
+          </li>
+          <li>
+            <strong>flex-basis : </strong>This component specifies the initial main size of the flex item.
+          <li>
+        </ul>
+
+        <ul class="emphasis">
+          <li>
+            Flex values between 0 and 1 have a somewhat special behavior: when the sum of the flex values
+            on
+            the line is less than 1, they will take up less than 100% of the free space.
+          </li>
+        </ul>
+
+      </article>
+    </section>
+
+    <section class="main-section" id="nested_flexbox">
+
+      <article>
+        <header>Nested flexboxes</header>
+        <p>
+          Flex items within a flex container can be laid out either horizontally or vertically. But we can nest a flex
+          container inside another one to make more complex layouts.
+        </p>
+
+        <p>
+          So imagine that for some reason we want to make a layout that looks like the below image.
+        </p>
+
+        <img src="images/layout.png" alt="example layout" width="400px" class="image">
+
+        <p>
+          We can think of the whole page as a big column that contains three rows. The second and third rows have two
+          horizontal elements inside them. Finally, Within the second flex item
+          of the second row, we have two child elements that are laid out vertically.
+        </p>
+        <p>
+          The HTML will be like this:
+        </p>
+        <div class="code-snippet">
+          <code><span>&lt;div class="parent"&gt;</span>
+  <span>&lt;div id="child-1"&gt;&lt;/div&gt;</span>
+  <span>&lt;div id="child-2"&gt;</span>
+    <span>&lt;div id="child-2-1"&gt;&lt;/div&gt;</span>
+    <span>&lt;div id="child-2-2"&gt;</span>
+      <span>&lt;div id="child-2-2-1"&gt;&lt;/div&gt;</span>
+      <span>&lt;div id="child-2-2-2"&gt;&lt;/div&gt;</span>
+    <span>&lt;/div&gt;</span>
+  <span>&lt;/div&gt;</span>
+  <span>&lt;div id="child-3"&gt;&lt;/div&gt;</span>
+    <span>&lt;div id="child-3-1"&gt;&lt;/div&gt;</span>
+    <span>&lt;div id="child-3-2"&gt;&lt;/div&gt;</span>
+  <span>&lt;/div&gt;</span>
+<span>&lt;/div&gt;</span></code>
+        </div>
+
+        <p>
+          Now that the HTML is done. We move over to CSS. The parent element needs to be the big flex container.
+        </p>
+
+        <div class="code-snippet">
+          <code><span>.parent {</span>
+  <span>display: flex;</span>
+  <span>flex-direction: column</span>
+}</code>
+        </div>
+
+        <p>
+          Now, each of the second and third rows has its own flex items.
+        </p>
+        <div class="code-snippet">
+          <code><span>#child-2,</span>
+<span>#child-3 {</span>
+  <span>display: flex</span>
+  <span>flex-direction: row</span>
+}</code>
+        </div>
+
+        <p>Now the child-2-2 element has its couple of children.</p>
+
+        <div class="code-snippet">
+          <code><span>#child-2-2</span> {
+  <span>display: flex</span>
+  <span>flex-direction: column</span>
+}</code>
+        </div>
+
+        <p>
+          The rest is just some margins, paddings, and background-colors.
+        </p>
+
+      </article>
+    </section>
+
+    <section class="main-section" id="reference">
+      <header>Reference</header>
+      <p>All the documentation in this page is taken from the following pages</p>
+      <ul>
+        <li>
+          <a href="https://yoksel.github.io/flex-cheatsheet/#section-order" target="_blank">yoksel github</a>
+        </li>
+        <li>
+          <a href="https://www.freecodecamp.org/news/understanding-flexbox-everything-you-need-to-know-b4013d4dc9af/"
+            target="_blank">FCC blog</a>
+        </li>
+        <li>
+          <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">CSS-TRICKS</a>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>Pejman (<a href="https://github.com/Pj-Thinker" target="_blank">github</a>)</p>
+    </footer>
+  </main>
+
+</body>
+
+</html>

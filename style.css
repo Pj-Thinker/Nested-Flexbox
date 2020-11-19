@@ -186,7 +186,7 @@ ul {
   font-weight: bold;
   cursor: pointer;
   transition: .5s background-color ease;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
 }
 
 .tab-label:hover {
@@ -196,6 +196,7 @@ ul {
 .tab-input:checked + .tab-label {
   background-color: var(--tab-label-select-color);
   color: white;
+  border-bottom: 5px solid var(--brick-red-color);
 }
 
 .tab-content {
@@ -248,7 +249,7 @@ footer a:hover{
   text-decoration: underline;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 760px) {
   body {
     flex-direction: row;
     justify-content: center;
@@ -287,4 +288,11 @@ footer a:hover{
     max-width: 800px;
     flex-grow: 1;
   }
+}
+
+@media screen and (max-width: 560px) {
+  .image {
+    width: 300px !important;
+  }
+
 }

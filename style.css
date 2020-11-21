@@ -63,6 +63,7 @@ ul {
   font-size: 1.4em;
   font-weight: bold;
   padding: 8px 0;
+  cursor: pointer;
 }
 
 #navbar-list {
@@ -292,7 +293,6 @@ footer a:hover{
 
 @media screen and (max-width: 560px) {
   .image {
-    width: 300px !important;
+    width: 60vw !important;
   }
-
 }
